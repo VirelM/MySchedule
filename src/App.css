@@ -1,38 +1,144 @@
-.App {
+.App{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dash{
+  background-color: gray;
+}
+.dashnav{
+  text-align: right;
+  margin-right: 50px;
+}
+.notifications{
+  display: inline;
+  margin-left: 10px;
+}
+.ulNotif{
+  width: 150px;
+  margin-left: 90%;
+  list-style: none;
+  text-align: center;
+  
+}
+table, th, td, tr{
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+th, td {
+  padding: 5px;
+  text-align: left;    
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.table_container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.userTable{
+  margin: 0px;
+  
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.prevTable{
+  float: left;
+  margin-top: auto;
+  margin-bottom: auto;
+  
+ 
+}
+.nextTable{
+  float: right;
+  margin-top: auto;
+  margin-bottom: auto;
+  
+}
+.nextTable, .prevTable{
+  height: 75px;
+}
+.clear{
+  clear: both;
+}
+.working{
+  background-color: blue;
+}
+#forty{
+  background-color: indigo;
+}
+.avaibleShift{
+  background-color: chartreuse;
+}
+.SelectedShift{
+  background-color: green;
+}
+.swapContainer{
+  border: 2px solid black;
+  padding: 20px;
+  text-align: center;
+}
+.swapContainer{
+  border: 2px solid black;
+  padding: 20px;
+  text-align: center;
+}
+.ownerpage{
+  background-color: gray;
+  padding-bottom: 20px;
+}
+h4{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.ulOwner{
+  padding-top: 75px;
+  list-style: none;
+  margin-bottom: 75px;
+}
+li { background: lightslategrey; }
+li:nth-child(odd) { background: lightgrey; }
+.createSchedules{
+  font-size: 32px;
+  padding: 20px;
+  margin-bottom: 100px;
+  border-radius: 10px;
+  background-color: mediumblue;
+}
+.requestChanges{
+  border: 1px solid black;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+h2{
+  margin-top: 0px;
+  padding-top:20px;
+  margin-bottom: 0px;
+  background-color: rgb(226, 143, 19);
+}
+hr{
+  margin-top: 1px;
+  /* width: 90%;
+  margin-right: auto;
+  margin-left: auto; */
+}
+.revision{
+  margin-bottom: 23px;
+  border: 1px solid darkgray;
+  width: 94%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: navajowhite;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.changee{
+  background-color: red;
+  
+}
+.receiver{
+  background-color: lime;
+ 
+}
+.SCRButtons{
+  margin-top: 5px;
+}
+.createForm{
+  border: 3px solid black;
 }
