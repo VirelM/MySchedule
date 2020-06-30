@@ -1,157 +1,27 @@
 import React from 'react';
-
+import ScheduleApiService from './services/work_schedules-api';
 
 export default class DashboardOwner extends React.Component{
+    state={
+        schedules:"",
+        users:""
+    }
+    componentDidMount(){
+        ScheduleApiService.getAllUsers()
+            .then((res)=>this.setState({'users':res}))
+        ScheduleApiService.getSchedules()
+            .then((res)=>{
+                this.setState({"schedules":res})
+            })
+    }
     render(){
+        let users = this.state.users;
+        console.log(users)
+        let lis = users.map(user=><li>{user.full_name}</li>)
         return(
             <div className="ownerpage">
                 <ul className="ulOwner">
-                    <li><h4>Kevin</h4><table>
-                    <tbody>
-                    <tr>
-                    <th></th>
-                    <th>8:00am</th>
-                    <th>9:00am</th>
-                    <th>10:00am</th>
-                    <th>11:00am</th>
-                    <th>12:00pm</th>
-                    <th>1:00pm</th>
-                    <th>2:00pm</th>
-                    <th>3:00pm</th>
-                    <th>4:00pm</th>
-                    <th>5:00pm</th>
-                    <th>6:00pm</th>
-                    <th>7:00pm</th>
-                    <th>8:00pm</th>
-                    <th>9:00pm</th>
-                    <th>10:00pm</th>
-                    </tr>
-                    <tr><th>Sunday</th>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    </tr>
-                    <tr><th>Monday</th>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    </tr>
-                    <tr><th>Tuesday</th>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    </tr>
-                    <tr><th>Wednesday</th>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    </tr>
-                    <tr><th>Thursday</th>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    </tr>
-                    <tr><th>Friday</th>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    </tr>
-                    <tr><th>Saturday</th>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className=""></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    <td className="working"></td>
-                    </tr>
-                    </tbody>
-                </table></li>
-                    <li>Josh</li>
-                    <li>Anita</li>
-                    <li>Richard</li>
-                    <li>Berry</li>
-                    <li>Hansel</li>
+                    {lis}
                 </ul>
                 <button className="createSchedules">Create schedules</button>
                 <div className="requestChanges">

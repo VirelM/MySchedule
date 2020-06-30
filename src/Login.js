@@ -2,7 +2,7 @@ import React from 'react';
 import AuthApiService from './services/auth-api-service';
 import TokenService from './services/token-service';
 import { Link } from 'react-router-dom';
-
+import ScheduleContext from './ScheduleContext';
 
 
 export default class Login extends React.Component{
@@ -12,7 +12,7 @@ export default class Login extends React.Component{
           push: () => {},
         },
     }
-    
+    static contextType = ScheduleContext;
     handleLoginSuccess = () => {
         const { location, history } = this.props
         console.log(location);
@@ -35,11 +35,17 @@ export default class Login extends React.Component{
         userid.value=''
         password.value=''
         TokenService.saveAuthToken(res.authToken)
-        this.onLoginSuccess()
+        this.context.setUser(res.user)
+        if(res.user.admin){
+          this.props.history.push('/dashboardOwner')
+        }else{
+          this.props.history.push('/dashboard')
+        }
       })
+      
       .catch(res=>{
         this.setState({erroro:res.error})
-      });
+      })
     }
     render(){
         return(

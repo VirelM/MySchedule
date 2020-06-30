@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Signup from './Signup';
 import Login from './Login';
 import Dashboard from './Dashboard';
@@ -8,12 +8,15 @@ import DashboardOwner from './DashboardOwner';
 import Create from './CreateSchedules';
 import SwapShift from './Swapshift';
 import Notification from './Notification';
+import PrivateOnlyRoute from './Utils/PrivateRouter';
 import PublicOnlyRoute from './Utils/PublicRouter';
-// import PublicOnlyRoute from './Utils/PrivateRouter';
+import { ScheduleProvider } from './ScheduleContext';
 
 //import { render } from '@testing-library/react';
 
 export default class App extends React.Component {
+  
+  
   navbar(){
       return(
         <nav>
@@ -22,6 +25,8 @@ export default class App extends React.Component {
         </nav>
       )
   }
+
+
   render(){
     return (
       <div className="App">
@@ -32,13 +37,15 @@ export default class App extends React.Component {
             <Link to="/login">login</Link>
           </nav>)
         }}/> */}
+        <ScheduleProvider>
         <PublicOnlyRoute exact path="/login" component={Login}/>
         <PublicOnlyRoute exact path="/" component={Signup}/>
-        <PublicOnlyRoute exact path="/dashboard" component={Dashboard}/>
-        <PublicOnlyRoute exact path="/dashboardowner" component={DashboardOwner}/>
-        <PublicOnlyRoute exact path="/create" component={Create}/>
-        <PublicOnlyRoute exact path="/swapshift" component={SwapShift}/>
-        <PublicOnlyRoute exact path="/notification" component={Notification}/>
+        <PrivateOnlyRoute exact path="/dashboard" component={Dashboard}/>
+        <PrivateOnlyRoute exact path="/dashboardowner" component={DashboardOwner}/>
+        <PrivateOnlyRoute exact path="/create" component={Create}/>
+        <PrivateOnlyRoute exact path="/swapshift" component={SwapShift}/>
+        <PrivateOnlyRoute exact path="/notification" component={Notification}/>
+        </ScheduleProvider>
       </div>
     );
   }
