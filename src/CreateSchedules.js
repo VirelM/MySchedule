@@ -1,7 +1,7 @@
 import React from 'react';
 // import ScheduleContext from './ScheduleContext'
 import ScheduleApiService from './services/work_schedules-api'
-
+import './App.css'
 
 export default class Create extends React.Component{
     // static contextType = ScheduleContext
@@ -43,55 +43,55 @@ export default class Create extends React.Component{
         return(
             <form className="createForm" onSubmit={this.handleSubmit}>
                 <label htmlFor="userid">Employee</label>
-                <input id="userid" name="userid"></input>
-                <div>
-                    <label htmlFor="startSun"><b>Sunday</b> </label>
+                <input className="createInput" id="userid" name="userid"></input>
+                <div className="createLabel">
+                    <label htmlFor="startSun"><b>Sunday</b> </label><br></br>
                     <label htmlFor="startSun"> Start: </label>
-                    <input id="startSun" name="startSun"></input>
+                    <input className="createInput" id="startSun" name="startSun"></input>
                     <label htmlFor="endSun">End: </label>
-                    <input id="endSun" name="endSun"></input>
+                    <input className="createInput" id="endSun" name="endSun"></input>
                 </div>
-                <div>
-                    <label htmlFor="startMon"><b>Monday</b> </label>
+                <div className="createLabel">
+                    <label htmlFor="startMon"><b>Monday</b> </label><br></br>
                     <label htmlFor="startMon">Start: </label>
-                    <input id="startMon" name="startMon"></input>
+                    <input className="createInput" id="startMon" name="startMon"></input>
                     <label htmlFor="endMon">End: </label>
-                    <input id="endMon" name="endMon"></input>
+                    <input className="createInput" id="endMon" name="endMon"></input>
                 </div>
-                <div>
-                    <label htmlFor="startTues"><b>Tuesday</b> </label>
+                <div className="createLabel">
+                    <label htmlFor="startTues"><b>Tuesday</b> </label><br></br>
                     <label htmlFor="StartTues">Start: </label>
-                    <input id="startTues" name="startTues"></input>
+                    <input className="createInput" id="startTues" name="startTues"></input>
                     <label htmlFor="endTues">End: </label>
-                    <input id="endTues" name="endTues"></input>
+                    <input className="createInput" id="endTues" name="endTues"></input>
                 </div>
-                <div>
-                    <label htmlFor="startWed"><b>Wednesday</b> </label>
+                <div className="createLabel">
+                    <label htmlFor="startWed"><b>Wednesday</b> </label><br></br>
                     <label htmlFor="startWed">Start: </label>
-                    <input id="startWed" name="startWed"></input>
+                    <input className="createInput" id="startWed" name="startWed"></input>
                     <label htmlFor="endWed">End: </label>
-                    <input id="endWed" name="endWed"></input>
+                    <input className="createInput" id="endWed" name="endWed"></input>
                 </div>
-                <div>
-                    <label htmlFor="startThurs"><b>Thursday</b> </label>
+                <div className="createLabel">
+                    <label htmlFor="startThurs"><b>Thursday</b> </label><br></br>
                     <label htmlFor="startThurs">Start: </label>
-                    <input id="startThurs" name="startThurs"></input>
+                    <input className="createInput" id="startThurs" name="startThurs"></input>
                     <label htmlFor="endThurs">End: </label>
-                    <input id="endThurs" name="endThurs"></input>
+                    <input className="createInput" id="endThurs" name="endThurs"></input>
                 </div>
-                <div>
-                    <label htmlFor="startFri"><b>Friday</b> </label>
+                <div className="createLabel">
+                    <label htmlFor="startFri"><b>Friday</b> </label><br></br>
                     <label htmlFor="startFri">Start: </label>
-                    <input id="startFri" name="startFri"></input>
+                    <input className="createInput" id="startFri" name="startFri"></input>
                     <label htmlFor="endFri">End: </label>
-                    <input id="endFri" name="endFri"></input>
+                    <input className="createInput" id="endFri" name="endFri"></input>
                 </div>
-                <div>
-                    <label htmlFor="startSat"><b>Saturday</b> </label>
+                <div className="createLabel">
+                    <label htmlFor="startSat"><b>Saturday</b> </label><br></br>
                     <label htmlFor="startSat">Start: </label>
-                    <input id="startSat" name="startSat"></input>
+                    <input className="createInput" id="startSat" name="startSat"></input>
                     <label htmlFor="endSat">End: </label>
-                    <input id="endSat" name="endSat"></input>
+                    <input className="createInput" id="endSat" name="endSat"></input>
                 </div>
                 <button>Return</button>
                 <button type="submit">Submit</button>

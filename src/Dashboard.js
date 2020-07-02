@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ScheduleApiService from './services/work_schedules-api';
 import Table from './Table';
+import TokenService from './services/token-service';
 
 
 export default class Dashboard extends React.Component{
@@ -9,31 +11,32 @@ export default class Dashboard extends React.Component{
             "schedules":[]
     }
     componentDidMount(){
+        console.log('goodbye')  
         ScheduleApiService.getSchedulesforUser()
             .then((res)=>{
                 console.log(res)
                 this.setState({"schedules":res})
             })
     }
-    // for (const [key, value] of Object.entries(newSchedule)){
-    //     if (value == ""){
-    //       newSchedule[key] = null;
-    //     }
-    //   }
+    logout = ()=>{
+        TokenService.clearAuthToken();
+        // this.props.history.push('/login')
+    }
     render(){
         console.log(this.state)
         let tables = this.state.schedules.map((Schedule)=><Table schedule={Schedule}/>)
         return(
             <div className="dash">
                 <nav className="dashnav">
-                    <a href="/login">logout</a>
-                    <div className="notifications">&#9993;</div>
+                    <NavLink to="/login" onClick={this.logout}>logout</NavLink>
+                    {/* <div className="notifications">&#9993;</div>
                     <ul className="ulNotif">
                         <li>Kevin &#x21C4;</li>
-                    </ul>
+                    </ul> */}
                 </nav>
                 <div className="table_container">
                 <button className="prevTable">&lt;</button>
+                
                 {tables}
                
                 <button className="nextTable">></button>
@@ -48,6 +51,3 @@ export default class Dashboard extends React.Component{
         )
     }
 }
-//npm install moment
-// import moment from 'moment';
-//let date = moment(new Date('2020-06-22T15:00:00.000Z')).format("LT")

@@ -87,13 +87,29 @@ const ScheduleApiService = {
       
   },
   getAllUsers(){
-    return fetch(`${config.API_ENDPOINT}/users`)
+    return fetch(`${config.API_ENDPOINT}/users`,{
+      headers: {
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+      },
+    })
     .then(res =>
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-  }
+  },
+  // getSchedulesforUser() {
+  //   return fetch(`${config.API_ENDPOINT}/schedules/`, {
+  //     headers: {
+  //       'authorization':`bearer ${TokenService.getAuthToken()}`,
+  //     },
+  //   })
+  //     .then(res =>
+  //       (!res.ok)
+  //         ? res.json().then(e => Promise.reject(e))
+  //         : res.json()
+  //     )
+  // },
 }
 
 export default ScheduleApiService

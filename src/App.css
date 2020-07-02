@@ -141,4 +141,15 @@ hr{
 }
 .createForm{
   border: 3px solid black;
+  text-align: center;
+  
+}
+.createInput{
+  display: inline-block;
+}
+.createLabel{
+  width: 13em;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }

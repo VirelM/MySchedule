@@ -11,37 +11,28 @@ export default class Table extends React.Component{
             times.push(time);
         }
         let newSchedule = {};
-        console.log(newSchedule)
         for(let [key,value] of Object.entries(this.props.schedule)){
             if(key !=='id' && key !=='userid'){
                 newSchedule[key] = value
             }
             
         }
-        console.log(newSchedule)
         
         // let table = this.props.schedules.map(schedule=>{
         let tds = [];
         let newScheduleKeys = Object.keys(newSchedule);
-        console.log(newScheduleKeys)
-       
         var days =[];
             for(let x=0;x<14;x+=2){
                 let newObject = {
                     start:newSchedule[newScheduleKeys[x]],
                     end:newSchedule[newScheduleKeys[x+1]]
                 };
-                console.log(newObject);
-                console.log(newScheduleKeys[x],newScheduleKeys[x+1], x, x+1)
                 days=[...days,newObject];
             }
-        console.log(days);
         for(let i =0;i<7;i++){
             
             tds.push(<Cells day={days[i]}/>)
         }
-        console.log(newSchedule[`startMon`])
-        console.log(tds)
         return(<table className="userTable">
         <tbody>
             <tr>

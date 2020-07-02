@@ -14,7 +14,7 @@ export default class Signup extends React.Component{
           full_name.value,
           parseInt(store.value)
         )
-        // .then(()=>{this.props.history.push('/login')})
+        this.props.history.push('/login')
 
         }
     render(){

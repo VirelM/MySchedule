@@ -9,10 +9,9 @@ export default class Cells extends React.Component{
             let time = `${i}`;
             times.push(time);
         }
-        console.log(times)
         // let tds = [];
         let order = [];
-            for(let i=0;i<15;i++){
+            for(let i=0;i<15;i++){ 
                 if(parseInt(times[i]) >= parseInt(moment(this.props.day['start']).format("H")) && parseInt(times[i]) <= parseInt(moment(this.props.day['end']).format("H"))){
                     order.push(1)
                 }else{
@@ -20,7 +19,6 @@ export default class Cells extends React.Component{
                 }
             }
         
-        console.log(order)
         if(order ===[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]){
             return(
                 <>
@@ -50,7 +48,6 @@ export default class Cells extends React.Component{
                     tds.push(<td></td>)
                 }
             }
-            console.log(tds)
             return(<>
                 {tds}
                 </>
