@@ -1,5 +1,5 @@
 export default {
-    API_ENDPOINT: 'http://localhost:8000/api',
+    API_ENDPOINT: 'https://boiling-peak-14432.herokuapp.com/api',
     TOKEN_KEY: 'jwt-client-auth-token'
   }
   
