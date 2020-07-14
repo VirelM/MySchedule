@@ -47,9 +47,9 @@ export default class Create extends React.Component{
                 <div className="createLabel">
                     <label htmlFor="startSun"><b>Sunday</b> </label><br></br>
                     <label htmlFor="startSun"> Start: </label>
-                    <input className="createInput" id="startSun" name="startSun"></input>
+                    <input className="createInput" placeholder="Ex. 2020-6-28 08:00 AM" id="startSun" name="startSun"></input>
                     <label htmlFor="endSun">End: </label>
-                    <input className="createInput" id="endSun" name="endSun"></input>
+                    <input className="createInput" placeholder="Ex. 2020-6-28 04:00 PM" id="endSun" name="endSun"></input>
                 </div>
                 <div className="createLabel">
                     <label htmlFor="startMon"><b>Monday</b> </label><br></br>
