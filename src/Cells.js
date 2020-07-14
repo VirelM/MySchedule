@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 
-
 export default class Cells extends React.Component{
     render(){
         let times = []
@@ -12,7 +11,8 @@ export default class Cells extends React.Component{
         // let tds = [];
         let order = [];
             for(let i=0;i<15;i++){ 
-                if(parseInt(times[i]) >= parseInt(moment(this.props.day['start']).format("H")) && parseInt(times[i]) <= parseInt(moment(this.props.day['end']).format("H"))){
+                if(parseInt(times[i]) >= parseInt(moment(this.props.day['start']).format("H")) + 7 && parseInt(times[i]) <= parseInt(moment(this.props.day['end']).format("H")) + 7){
+                    console.log(moment(this.props.day['start']),this.props.day['start'],this.props.day['end'],times[i], moment(this.props.day['start']).format("H"), moment(this.props.day['end']).format("H"));
                     order.push(1)
                 }else{
                     order.push(0)

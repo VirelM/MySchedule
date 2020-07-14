@@ -7,6 +7,7 @@ export default class Table extends React.Component{
     displayActiveWeek = () =>{
         
         let pastDate = this.props.schedule;
+        console.log(pastDate); 
         let newSchedule = {};
         for(let [key,value] of Object.entries(pastDate)){
             if(key !=='id' && key !=='userid'){

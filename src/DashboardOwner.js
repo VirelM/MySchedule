@@ -19,6 +19,7 @@ export default class DashboardOwner extends React.Component{
 
         ScheduleApiService.getAllUsers()
             .then((res)=>{
+                console.log(res)
                 this.setState({"users":res})
             })
 
