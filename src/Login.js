@@ -49,7 +49,7 @@ export default class Login extends React.Component{
     }
     render(){
         return(
-            <form id="Login" onSubmit={this.handleSubmitJwtAuth}>
+            <form id="Login" className="SignUp" onSubmit={this.handleSubmitJwtAuth}>
                 <fieldset>
                     <legend>Metro</legend>
                     <label htmlFor="userID_L">User ID</label>

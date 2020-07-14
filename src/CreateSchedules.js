@@ -93,8 +93,8 @@ export default class Create extends React.Component{
                     <label htmlFor="endSat">End: </label>
                     <input className="createInput" id="endSat" name="endSat"></input>
                 </div>
-                <button>Return</button>
-                <button type="submit">Submit</button>
+                <button className="createpage">Return</button>
+                <button className="createpage" type="submit">Submit</button>
             </form>
         )
     }

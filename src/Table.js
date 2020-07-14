@@ -4,6 +4,32 @@ import Cells from './Cells';
 
 
 export default class Table extends React.Component{
+    displayActiveWeek = () =>{
+        
+        let pastDate = this.props.schedule;
+        let newSchedule = {};
+        for(let [key,value] of Object.entries(pastDate)){
+            if(key !=='id' && key !=='userid'){
+                newSchedule[key] = value
+            }
+            
+        }
+        
+        console.log(newSchedule)
+        pastDate = Object.values(newSchedule);
+        console.log(pastDate)
+        let pastDate2 = moment(new Date(pastDate.find(date=>date!==null)));
+        let pastDate3 = moment(new Date(pastDate.find(date=>date!==null)));
+        let daysToSubstract = pastDate2.day();
+        let pastSunday = pastDate2.subtract(daysToSubstract, "days");
+        let daysToSubstract2 = pastDate3.day();
+        let pastSaturday = pastDate3.subtract(daysToSubstract2, "days");
+        console.log(pastSunday.format("MMMM Do YYYY"))
+        pastSaturday = pastSaturday.add(6, "days");
+        console.log(pastSunday.format("MMMM Do YYYY"))
+        console.log(pastSaturday.format("MMMM Do YYYY"))
+        return { Sunday:pastSunday.format("MMMM Do YYYY"), Saturday:pastSaturday.format("MMMM Do YYYY")}
+    }
     render(){
         let times = []
         for(let i=8;i<23;i++){
@@ -33,7 +59,12 @@ export default class Table extends React.Component{
             
             tds.push(<Cells day={days[i]}/>)
         }
-        return(<table className="userTable">
+        let week = this.displayActiveWeek();
+        console.log(week)
+        return(
+            <div className="tableDiv">
+        <h4 className="displayWeek">{week.Sunday} - {week.Saturday}</h4>
+        <table className="userTable">
         <tbody>
             <tr>
                 <th></th>
@@ -61,6 +92,7 @@ export default class Table extends React.Component{
             <tr><th>Friday</th>{tds[4]}</tr>
             <tr><th>Saturday</th>{tds[5]}</tr>
         </tbody>
-        </table>)
+        </table>
+        </div>)
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ScheduleApiService from './services/work_schedules-api';
-
+import { Link } from 'react-router-dom';
 
 
 export default class Signup extends React.Component{
@@ -19,7 +19,7 @@ export default class Signup extends React.Component{
         }
     render(){
         return(
-            <form id="SignUp" onSubmit={this.handleSubmit}>
+            <form id="SignUp" className="SignUp" onSubmit={this.handleSubmit}>
                 <fieldset>
                     <label>location </label>
                     <select name="store">
@@ -36,7 +36,7 @@ export default class Signup extends React.Component{
                     <input name="password" id="password_S"></input><br></br>
                 </fieldset>
                 <button type="submit">Submit</button>
-                <button type="button">Already have an account? Login</button>
+                <Link to="/login"><button type="button">Already have an account? Login</button></Link>
             </form>
         )
     }

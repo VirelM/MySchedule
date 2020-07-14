@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* C:\Users\jovan\projects\my_metro_schedule\public\wall.jpg */
+  background-image: url('/wall.jpg');
+  background-color: rgba(20, 17, 17, 0.5);
+  background-blend-mode: multiply;
 }
 
 code {

@@ -31,19 +31,24 @@ export default class DashboardOwner extends React.Component{
     handleExpansion = (event) =>{
         console.log(event.target)
         let full_name = event.target.textContent;
+        full_name = full_name.split(" ");
+        full_name = [full_name[0], full_name[1]];
+        full_name = full_name.join(' ')
         let clickedUser=this.state.users.find(user=>user.full_name===full_name);
-        let users = this.state.users.filter(user=>user!==clickedUser);
-        clickedUser['expanded']=true;
+        clickedUser = Object.assign(clickedUser, {expanded:true});
+        let users = this.state.users;
+        users = Object.assign(users, clickedUser)
         console.log(clickedUser);
-        this.setState({users:[clickedUser,...users]})
+        this.setState({users:[...users]})
         
     }
     handleDExpansion = (event) =>{
         let full_name = event.target.textContent;
         let clickedUser = this.state.users.find(user=>user.full_name===full_name);
-        let users = this.state.users.filter(user=>user!==clickedUser);
-        clickedUser['expanded']=false;
-        this.setState({users:[clickedUser,...users]})
+        clickedUser = Object.assign(clickedUser, {expanded:false});
+        let users = this.state.users;
+        users = Object.assign(users, clickedUser)
+        this.setState({users:[...users]})
     }
     create = ()=>{
         this.props.history.push('/create')
@@ -55,12 +60,12 @@ export default class DashboardOwner extends React.Component{
             if(user.expanded){
                 return <li><h4 onClick={e=>this.handleDExpansion(e)}>{user.full_name}</h4><Dashboard users={this.state.schedules.filter(schedule=>user.userid===schedule.userid)}></Dashboard></li>
             }
-            return <li onClick={e=>this.handleExpansion(e)}><h4>{user.full_name}</h4></li>
+            return <li onClick={e=>this.handleExpansion(e)}><h4>{user.full_name} //{user.userid}</h4></li>
         })
         return(
             <div className="ownerpage">
                 <nav className="dashnav">
-                    <NavLink to="/login" className="" onClick={this.logout}>logout</NavLink>
+                    <NavLink to="/login" className="logout" onClick={this.logout}>logout</NavLink>
                 </nav>
                 <ul className="ulOwner">
                     {lis}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import ScheduleApiService from './services/work_schedules-api';
 import Table from './Table';
@@ -16,10 +15,9 @@ export default class Dashboard extends React.Component{
         ScheduleApiService.getSchedulesforUser()
             .then((res)=>{
                 console.log(res)
-                this.setState({"schedules":res})
-            })
-            .then(()=>{
-                this.mostRecentWeek()
+                this.setState({"schedules":res},() =>{
+                    this.mostRecentWeek()
+                })
             })
         
         
@@ -59,6 +57,7 @@ export default class Dashboard extends React.Component{
         }
         
         let listNumberScheduels= schedules.map(schedule=>{
+            console.log(daysBetween(new Date(schedule.startSun),new Date(pastSunday)));
             console.log('testOutcome2Pre');
             if(daysBetween(new Date(schedule.startSun),new Date(pastSunday))===0){
                 console.log('test')
@@ -102,7 +101,7 @@ export default class Dashboard extends React.Component{
         return(
             <div className="dash">
                 <nav className="dashnav">
-                    <NavLink to="/login" onClick={this.logout}>logout</NavLink>
+                    <NavLink className="logout" to="/login" onClick={this.logout}>logout</NavLink>
                     {/* <div className="notifications">&#9993;</div>
                     <ul className="ulNotif">
                         <li>Kevin &#x21C4;</li>
