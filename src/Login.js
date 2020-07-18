@@ -15,7 +15,6 @@ export default class Login extends React.Component{
     static contextType = ScheduleContext;
     handleLoginSuccess = () => {
         const { location, history } = this.props
-        console.log(location);
         const destination = (location.state || {}).from || '/'
         history.push(destination)
     }
@@ -26,7 +25,6 @@ export default class Login extends React.Component{
     ev.preventDefault();
     this.setState({error:null});
     const { userid, password } = ev.target;
-    console.log(userid, password);
     AuthApiService.postLogin({
       userid:userid.value,
       password:password.value

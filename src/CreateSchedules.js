@@ -17,14 +17,6 @@ export default class Create extends React.Component{
             startSat, endSat, 
             startSun, endSun
          } = ev.target;
-        console.log(userid, 
-            startMon, endMon, 
-            startTues, endTues, 
-            startWed, endWed, 
-            startThurs, endThurs, 
-            startFri, endFri, 
-            startSat, endSat, 
-            startSun, endSun);
         ScheduleApiService.postSchedule( userid.value, 
             startSun.value, endSun.value,
             startMon.value, endMon.value, 

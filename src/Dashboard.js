@@ -10,11 +10,9 @@ export default class Dashboard extends React.Component{
     state={
             "schedules":[]
     }
-    componentDidMount(){
-        console.log('goodbye')  
+    componentDidMount(){ 
         ScheduleApiService.getSchedulesforUser()
             .then((res)=>{
-                console.log(res)
                 this.setState({"schedules":res},() =>{
                     this.mostRecentWeek()
                 })
@@ -37,7 +35,6 @@ export default class Dashboard extends React.Component{
     //     })
     // }
     mostRecentWeek(){
-        console.log("mostrecentweek running")
         let schedules = this.state.schedules;
         let todaysDate = moment( new Date() );
         let daysToSubstract = todaysDate.day();
@@ -57,21 +54,16 @@ export default class Dashboard extends React.Component{
         }
         
         let listNumberScheduels= schedules.map(schedule=>{
-            console.log(daysBetween(new Date(schedule.startSun),new Date(pastSunday)));
-            console.log('testOutcome2Pre');
             if(daysBetween(new Date(schedule.startSun),new Date(pastSunday))===0){
-                console.log('test')
                 this.setState({
                     "active":schedule
                 })
                 return 0
             }else{
-                console.log('testOutcome2');
                 return daysBetween(new Date(schedule.startSun),new Date(pastSunday))
             }
             
         });
-        console.log(listNumberScheduels)
         return listNumberScheduels
     }
     switchActiveScheduleNext = () =>{
@@ -90,10 +82,8 @@ export default class Dashboard extends React.Component{
         });
     }
     render(){
-        console.log(this.state)
         let tables = this.state.schedules.map((Schedule)=>{
             if(Schedule===this.state.active){
-                console.log('match')
                 return <Table className="" schedule={Schedule}/>
             }
             
@@ -124,11 +114,3 @@ export default class Dashboard extends React.Component{
         )
     }
 }
-
-// let endDate = moment( new Date("2020-07-05T00:00:00.000Z")).format('MMMM Do YYYY');
-// let initialDate = moment( new Date("2020-06-28T15:00:00.000Z")).format('MMMM Do YYYY');
-// let todaysDate = moment( new Date() );
-// let daysToSubstract = todaysDate.day();
-// console.log( todaysDate.format("MMMM Do YYYY") );
-// let pastSunday = todaysDate.subtract(daysToSubstract, "days").format("MMMM Do YYYY");
-// console.log( pastSunday );

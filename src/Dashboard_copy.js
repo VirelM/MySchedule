@@ -12,7 +12,6 @@ export default class Dashboard extends React.Component{
         })
     }
     mostRecentWeek(){
-        console.log("mostrecentweek running")
         let schedules = this.state.schedules;
         let todaysDate = moment( new Date() );
         let daysToSubstract = todaysDate.day();
@@ -32,21 +31,16 @@ export default class Dashboard extends React.Component{
         }
         
         let listNumberScheduels= schedules.map(schedule=>{
-            console.log(daysBetween(new Date(schedule.startSun),new Date(pastSunday)));
-            console.log('testOutcome2Pre');
             if(daysBetween(new Date(schedule.startSun),new Date(pastSunday))===0){
-                console.log('test')
                 this.setState({
                     "active":schedule
                 })
                 return 0
             }else{
-                console.log('testOutcome2');
                 return daysBetween(new Date(schedule.startSun),new Date(pastSunday))
             }
             
         });
-        console.log(listNumberScheduels)
         return listNumberScheduels
     }
     switchActiveScheduleNext = () =>{
@@ -67,7 +61,6 @@ export default class Dashboard extends React.Component{
     render(){
         let tables = this.state.schedules.map((Schedule)=>{
             if(Schedule===this.state.active){
-                console.log('match')
                 return <Table className="" schedule={Schedule}/>
             }
             

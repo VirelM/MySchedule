@@ -7,7 +7,6 @@ export default class Signup extends React.Component{
     handleSubmit = ev => {
         ev.preventDefault();
         const { userid, password, full_name, store } = ev.target;
-        console.log(userid, password);
         ScheduleApiService.postNewUser(
           userid.value,
           password.value,

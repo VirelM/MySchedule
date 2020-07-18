@@ -7,7 +7,6 @@ export default class Table extends React.Component{
     displayActiveWeek = () =>{
         
         let pastDate = this.props.schedule;
-        console.log(pastDate); 
         let newSchedule = {};
         for(let [key,value] of Object.entries(pastDate)){
             if(key !=='id' && key !=='userid'){
@@ -15,20 +14,14 @@ export default class Table extends React.Component{
             }
             
         }
-        
-        console.log(newSchedule)
         pastDate = Object.values(newSchedule);
-        console.log(pastDate)
         let pastDate2 = moment(new Date(pastDate.find(date=>date!==null)));
         let pastDate3 = moment(new Date(pastDate.find(date=>date!==null)));
         let daysToSubstract = pastDate2.day();
         let pastSunday = pastDate2.subtract(daysToSubstract, "days");
         let daysToSubstract2 = pastDate3.day();
         let pastSaturday = pastDate3.subtract(daysToSubstract2, "days");
-        console.log(pastSunday.format("MMMM Do YYYY"))
         pastSaturday = pastSaturday.add(6, "days");
-        console.log(pastSunday.format("MMMM Do YYYY"))
-        console.log(pastSaturday.format("MMMM Do YYYY"))
         return { Sunday:pastSunday.format("MMMM Do YYYY"), Saturday:pastSaturday.format("MMMM Do YYYY")}
     }
     render(){
@@ -61,7 +54,6 @@ export default class Table extends React.Component{
             tds.push(<Cells day={days[i]}/>)
         }
         let week = this.displayActiveWeek();
-        console.log(week)
         return(
             <div className="tableDiv">
         <h4 className="displayWeek">{week.Sunday} - {week.Saturday}</h4>

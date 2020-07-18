@@ -10,16 +10,13 @@ export default class DashboardOwner extends React.Component{
         users:[]
     }
     componentDidMount(){
-        console.log('hello')
         ScheduleApiService.getSchedules()
             .then((res)=>{
-                console.log(res)
                 this.setState({"schedules":res})
             })
 
         ScheduleApiService.getAllUsers()
             .then((res)=>{
-                console.log(res)
                 this.setState({"users":res})
             })
 
@@ -30,7 +27,6 @@ export default class DashboardOwner extends React.Component{
         // this.props.history.push('/login')
     }
     handleExpansion = (event) =>{
-        console.log(event.target)
         let full_name = event.target.textContent;
         full_name = full_name.split(" ");
         full_name = [full_name[0], full_name[1]];
@@ -39,7 +35,6 @@ export default class DashboardOwner extends React.Component{
         clickedUser = Object.assign(clickedUser, {expanded:true});
         let users = this.state.users;
         users = Object.assign(users, clickedUser)
-        console.log(clickedUser);
         this.setState({users:[...users]})
         
     }
@@ -56,7 +51,6 @@ export default class DashboardOwner extends React.Component{
     }
     render(){
         let users = this.state.users;
-        console.log(this.state)
         let lis = users.map(user=>{
             if(user.expanded){
                 return <li><h4 onClick={e=>this.handleDExpansion(e)}>{user.full_name}</h4><Dashboard users={this.state.schedules.filter(schedule=>user.userid===schedule.userid)}></Dashboard></li>
